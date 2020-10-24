@@ -78,5 +78,3 @@ def get_all_office_spaces():
 		data['office_spaces'].append({'name': office_spaces[i][0], 'latitude': office_spaces[i][1], 'longitude': office_spaces[i][2]})
 	return jsonify(data)
 
-
-app.run()
