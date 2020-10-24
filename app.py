@@ -66,7 +66,7 @@ def get_redlining_from_address():
 def get_all_redlining():
 	data = {'redlinings' : []}
 	for i in range(len(redlinings)):
-		data['redlinings'].append({'coordinates': redlinings[i][0], 'name': redlinings[i][1], 'area_description_data': redlinings[i][2]})
+		data['redlinings'].append({'coordinates': redlinings[i][0], 'name': redlinings[i][1], 'area_description_data': redlinings[i][2], 'holc_id': redlinings[i][3], 'holc_grade': redlinings[i][4]})
 	return jsonify(data)
 
 
