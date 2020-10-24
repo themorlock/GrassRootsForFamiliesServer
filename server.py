@@ -8,8 +8,8 @@ from shapely.geometry.polygon import Polygon
 import json
 import csv
 
-REDLINING_FILE_NAME = '/Users/saakethvangati/Downloads/TXAustin19xx.geojson.txt'
-OFFICE_SPACES_FILE_NAME = 'officespace.csv'
+REDLINING_FILE_NAME = 'data/TXAustin19xx.geojson.txt'
+OFFICE_SPACES_FILE_NAME = 'data/officespace.csv'
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
