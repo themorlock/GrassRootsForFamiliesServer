@@ -12,7 +12,6 @@ REDLINING_FILE_NAME = 'data/TXAustin19xx.geojson.txt'
 OFFICE_SPACES_FILE_NAME = 'data/officespace.csv'
 
 app = flask.Flask(__name__)
-app.config["DEBUG"] = True
 
 json_file = json.load(open(REDLINING_FILE_NAME))
 office_spaces = []
