@@ -10,6 +10,7 @@ import csv
 
 REDLINING_FILE_NAME = 'data/TXAustin19xx.geojson.txt'
 OFFICE_SPACES_FILE_NAME = 'data/officespace.csv'
+AFFORDABLE_HOUSING_FILE_NAME = 'data/City_of_Austin_Affordable_Housing.csv'
 
 app = flask.Flask(__name__)
 
@@ -27,6 +28,16 @@ for i in range(len(json_file['features'])):
 		longitude, latitude = json_file['features'][i]['geometry']['coordinates'][0][0][j]
 		polygon_data.append((longitude, latitude))
 	redlinings.append((polygon_data, json_file['features'][i]['properties']['name'], json_file['features'][i]['properties']['area_description_data'], json_file['features'][i]['properties']['holc_id'], json_file['features'][i]['properties']['holc_grade']))
+
+affordable_housing = []
+i = 0
+with open(AFFORDABLE_HOUSING_FILE_NAME) as f:
+    read_csv = csv.reader(f, delimiter=',')
+    for row in read_csv:
+        if i != 0:
+        	affordable_housing.append(row)
+        i += 1
+
 
 geolocator = Bing('Ap5pkK0nWp4CofxS0RYgcsdzgBA9I1Rf5MnWDwWbMH9Baxp2bJBNUaaBf9-H21g_')
 
@@ -75,5 +86,13 @@ def get_all_office_spaces():
 	data = {'office_spaces' : []}
 	for i in range(len(office_spaces)):
 		data['office_spaces'].append({'name': office_spaces[i][0], 'latitude': office_spaces[i][1], 'longitude': office_spaces[i][2]})
+	return jsonify(data)
+
+
+@app.route('/get_all_affordable_housing', methods=['GET'])
+def get_all_affordable_housing():
+	data = {'affordable_housing' : []}
+	for i in range(len(affordable_housing)):
+		data['affordable_housing'].append({'project_name': affordable_housing[i][0], 'address': affordable_housing[i][1], 'unit_type': affordable_housing[i][2], 'tenure': affordable_housing[i][3], 'latitude': affordable_housing[i][4], 'longitude': affordable_housing[i][5]})
 	return jsonify(data)
 
