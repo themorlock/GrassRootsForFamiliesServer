@@ -8,7 +8,7 @@ from shapely.geometry.polygon import Polygon
 import json
 import csv
 
-REDLINING_FILE_NAME = 'data/TXAustin19xx.geojson.txt'
+REDLINING_FILE_NAME = 'data/TXAustin19xx.json'
 OFFICE_SPACES_FILE_NAME = 'data/officespace.csv'
 AFFORDABLE_HOUSING_FILE_NAME = 'data/City_of_Austin_Affordable_Housing.csv'
 
